@@ -10,13 +10,15 @@ Create a Bitcoin music player using Quasar/Vue 3, the Composition API, UnoCSS, a
 - [✅] Retrieve the all time music NFTS
 - [✅] Display them all in a list
 - [✅] Create a component for each track
-- [ ] Should have a play button
+- [✅] Should have a play button
+- [✅] Hitting play should load the song
 - [ ] Hitting play should play the song
-- [ ] Should be able to pause the song
-- [ ] Should be able to track the song
+- [✅] Should be able to pause the song
+- [✅] Should be able to track the song
 - [ ] Hitting play on another song should play that song and pause the current track
 - [ ] Volume control would be nice
 - [ ] Search for an track
+- [ ] Add a drop down to change the date range
 
 ## Install the dependencies
 

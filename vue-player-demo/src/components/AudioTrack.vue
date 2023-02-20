@@ -18,6 +18,10 @@
             <p my-auto font-bold> {{ track.name }}</p>
           </q-card-section>
 
+          <q-card-section >
+            <q-icon @click="$emit('setCurrentTrack', track)"  name="play_arrow" />
+          </q-card-section>
+
           <q-card-section ml-auto>
             <p my-auto text-xs font-bold>   {{ track.stats.vol_total / 100000000 }}</p>
           </q-card-section>
@@ -35,5 +39,4 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   track: () => { name: '' },
 });
-
 </script>
