@@ -12,7 +12,46 @@
 <script setup lang="ts">
 import { Todo, Meta } from 'components/models';
 import ExampleComponent from 'components/ExampleComponent.vue';
-import { ref } from 'vue';
+import { ref, watch, onBeforeMount } from 'vue';
+import { useQuery } from '@vue/apollo-composable';
+import gql from 'graphql-tag';
+
+// TODO: type the audioNFTs array
+const audioNFTs = ref<any[]>([]);
+const getAudioRankings = async () => {
+  const { result } = useQuery(gql`
+    query Ranks{
+      ranks(
+      filter: "total",
+      category: "AUDIO",
+      search: "") {
+        name,
+        image,
+        origin,
+        stats {
+          rank
+          floor
+          vol_24h
+          vol_7d
+          vol_30d
+          vol_total
+          __typename
+      },
+        __typename
+      }
+    }
+  `);
+
+  watch(result, (value) => {
+      audioNFTs.value = value?.ranks;
+    }
+  );
+};
+
+// Get audio NFTs before mount
+onBeforeMount(() => {
+  getAudioRankings();
+});
 
 const todos = ref<Todo[]>([
   {
