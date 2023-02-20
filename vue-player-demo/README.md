@@ -6,7 +6,7 @@ Create a Bitcoin music player using Quasar/Vue 3, the Composition API, UnoCSS, a
 - [✅] Create a new Quasßar/Vue 3 project using the Quasar CLI
 - [✅] Install Apollo Vue to interact with the Relay GraphQL API
   - [ ] TODO: Replace this with POWCO API
-- [ ] Install and configure UnoCSS for styling
+- [✅] Install and configure UnoCSS for styling
 - [✅] Retrieve the all time music NFTS
 - [ ] Display them all in a list
 - [ ] Creat a component for each track

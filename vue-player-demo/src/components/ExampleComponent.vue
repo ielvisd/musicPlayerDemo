@@ -1,7 +1,9 @@
 <template>
   <div>
     <p>{{ title }}</p>
-    <ul>
+    <ul
+      bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600"
+    >
       <li v-for="todo in todos" :key="todo.id" @click="increment">
         {{ todo.id }} - {{ todo.content }}
       </li>

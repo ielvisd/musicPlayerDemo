@@ -72,7 +72,14 @@ module.exports = configure(function (/* ctx */) {
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
 
-      vitePlugins: [['unocss/vite', {}]],
+      vitePlugins: [
+        [
+          'unocss/vite',
+          {
+            attributify: true,
+          },
+        ],
+      ],
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
