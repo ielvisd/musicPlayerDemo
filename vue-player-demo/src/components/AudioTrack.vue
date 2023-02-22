@@ -19,7 +19,8 @@
           </q-card-section>
 
           <q-card-section >
-            <q-icon @click="$emit('setCurrentTrack', track)"  name="play_arrow" />
+            <q-icon v-if="!isPlaying && currentTrack === track || currentTrack !== track" @click="$emit('setCurrentTrack', track)"  name="play_arrow" />
+            <q-icon v-else  @click="$emit('setCurrentTrack', track)"  name="pause" />
           </q-card-section>
 
           <q-card-section ml-auto>
@@ -35,8 +36,12 @@ import { Track } from './models';
 
 interface Props {
   track: Track;
+  isPlaying?: boolean;
+  currentTrack?: Track;
 }
 const props = withDefaults(defineProps<Props>(), {
   track: () => { name: '' },
+  isPlaying: false,
+  currentTrack: () => { name: '' },
 });
 </script>
