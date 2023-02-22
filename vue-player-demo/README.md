@@ -19,6 +19,7 @@ Create a Bitcoin music player using Quasar/Vue 3, the Composition API, UnoCSS, a
 - [ ] Volume control would be nice
 - [ ] Search for an track
 - [ ] Add a drop down to change the date range
+- [✅] Setup Vercel and deploy our application to a live site
 
 ## Install the dependencies
 

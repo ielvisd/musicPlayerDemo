@@ -51,7 +51,4 @@ const getAudioRankings = async () => {
 onBeforeMount(() => {
   getAudioRankings();
 });
-
-
-
 </script>
