@@ -1,9 +1,9 @@
 <template>
   <q-page class="row items-center justify-evenly">
     <audio-tracks-list
-      @setNewDate="getAudioRankings"
-      title="Example component"
-      active
+      @setNewDate="setDateRange"
+      @setSearchText="setSearchText"
+      title="Best selling audio NFTs"
       :tracks="audioNFTs"
     ></audio-tracks-list>
   </q-page>
@@ -16,17 +16,31 @@ import { ref, watch, onBeforeMount } from 'vue';
 import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
 
-
-// TODO: type the audioNFTs array
 const audioNFTs = ref<Track[]>([]);
-const getAudioRankings = async (dateFilter: object) => {
-  console.log('getAudioRankings called', dateFilter)
+const dateRange = ref({
+  label: 'Last 7 days',
+  value: '7d'
+});
+const searchText = ref<string>('');
+
+const setDateRange = (value: object) => {
+  dateRange.value = value;
+  getAudioRankings(dateRange.value, searchText);
+};
+
+const setSearchText = (value: string) => {
+  searchText.value = value;
+  getAudioRankings(dateRange.value, searchText);
+};
+
+const getAudioRankings = async (dateFilter: string, searchFilter: string) => {
+  console.log('getAudioRankings called', dateFilter, searchFilter)
   const { result } = useQuery(gql`
     query Ranks{
       ranks(
       filter: "${dateFilter.value}",
       category: "AUDIO",
-      search: "") {
+      search: "${searchFilter.value}") {
         name,
         image,
         origin,
@@ -52,9 +66,6 @@ const getAudioRankings = async (dateFilter: object) => {
 
 // Get audio NFTs before mount
 onBeforeMount(() => {
-  getAudioRankings({
-    label: 'Last 7 days',
-    value: '7d'
-  });
+  getAudioRankings(dateRange.value, searchText);
 });
 </script>

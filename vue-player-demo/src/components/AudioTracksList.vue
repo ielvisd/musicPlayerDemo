@@ -2,6 +2,7 @@
   <div min-h-screen>
     <div class="q-pa-md mx-auto" style="max-width: 300px">
       <div class="q-gutter-md">
+        <q-input debounce="500" v-model="searchText" label="Search audio tracks" />
         <q-select v-model="dateModel" :options="options"  :display-value="`${dateModel ? dateModel.label : '*none*'}`"
         />
       </div>
@@ -36,18 +37,20 @@
 <script setup lang="ts">
 import AudioTrack from './AudioTrack.vue';
 import { Track } from './models';
-import { ref, watch, withDefaults } from 'vue';
+import { ref, watch, withDefaults, defineProps } from 'vue';
 import AudioPlayer from 'vue3-audio-player';
 import 'vue3-audio-player/dist/style.css';
 
 const currentTrack = ref<Track | null>(null);
+const searchText = ref<string>('');
 const currentTrackLocation = ref('');
 const currentTrackImageLocation = ref('');
 const bitcoinAudioPlayer = ref(AudioPlayer);
 const isPlaying = ref(false);
 
 const emit = defineEmits<{
-  (e: 'setNewDate', newDateModel: object): void
+  (e: 'setNewDate', newDateModel: object): void,
+  (e: 'setSearchText', newSearchText: string): void,
 }>()
 
 const dateModel= ref( {
@@ -73,9 +76,12 @@ const options = [
   }
 ]
 
+watch(searchText, (newSearchText) => {
+  emit('setSearchText', newSearchText)
+})
+
 // This function will be called when a new date is selected
 watch(dateModel, (newDateModel) => {
-  console.log('model', dateModel, newDateModel)
   emit('setNewDate', newDateModel)
 })
 
