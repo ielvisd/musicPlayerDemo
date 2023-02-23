@@ -1,7 +1,7 @@
 <template>
       <q-card
-      class="my-card" border-solid border-0 border-b border-blue-900 flat w-full md:w-lg>
-        <q-card-section horizontal>
+      class="my-card" border-solid border-0 border-b border-blue-900 flat w-full md:w-lg py-2>
+        <q-card-section horizontal flex items-center>
           <q-card-section>
               <p my-auto text-xs font-bold>   {{ track.stats.rank }}.</p>
             </q-card-section>
@@ -23,8 +23,12 @@
             <q-icon v-else  @click="$emit('setCurrentTrack', track)"  name="pause" />
           </q-card-section>
 
-          <q-card-section ml-auto>
-            <p my-auto text-xs font-bold>   {{ track.stats.vol_total / 100000000 }}</p>
+          <q-card-section ml-auto flex justify-center items-center>
+            <div w-4 pt-1>
+              <img src="https://cdn.cdnlogo.com/logos/b/91/bitcoin-sv.svg">
+            </div>
+
+          <p ml-2 my-auto text-xs font-bold>   {{ track.stats.vol_total / 100000000 }}</p>
           </q-card-section>
 
         </q-card-section>

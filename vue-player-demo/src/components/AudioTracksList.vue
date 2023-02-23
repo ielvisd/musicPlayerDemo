@@ -26,6 +26,7 @@
 
     <audio-track
       @setCurrentTrack="loadAndOrPlayPauseCurrentTrack"
+      :currentTrack="currentTrack"
       :track="track"
       :isPlaying="isPlaying"
       v-for="track in tracks"
@@ -41,7 +42,15 @@ import { ref, watch, withDefaults, defineProps } from 'vue';
 import AudioPlayer from 'vue3-audio-player';
 import 'vue3-audio-player/dist/style.css';
 
-const currentTrack = ref<Track | null>(null);
+const currentTrack = ref<Track>({
+  name: '',
+  origin: '',
+  image: '',
+  stats: {
+    rank: 0,
+    vol_total: 0,
+  },
+});
 const searchText = ref<string>('');
 const currentTrackLocation = ref('');
 const currentTrackImageLocation = ref('');
@@ -142,6 +151,6 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 watch(currentTrack, (newTrack) => {
-  loadAndOrPlayPauseCurrentTrack(newTrack ? newTrack : {name: 'No sales in current range', origin: ''});
+  loadAndOrPlayPauseCurrentTrack(newTrack as Track);
 });
 </script>
