@@ -9,7 +9,7 @@
     </div>
 
     <AudioPlayer
-      v-if="currentTrack"
+      v-if="currentTrack.name"
       @loadedmetadata="playTrack"
       mt-4
       @play="checkIsPlaying"
