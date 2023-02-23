@@ -128,4 +128,4 @@ https://youtu.be/Z8Hy3w0AfSY
 
 # 5. Time
 
-For this part I spent about 1-2 hours coding, 1 hour writing and 30 minutes recording a solution walkthrough when it was all done.
+For this part I spent about 2 hours coding, 1 hour writing and 30 minutes recording a solution walkthrough when it was all done.
