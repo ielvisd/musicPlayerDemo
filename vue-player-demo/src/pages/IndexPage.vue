@@ -34,7 +34,6 @@ const setSearchText = (value: string) => {
 };
 
 const getAudioRankings = async (dateFilter: string, searchFilter: string) => {
-  console.log('getAudioRankings called', dateFilter, searchFilter)
   const { result } = useQuery(gql`
     query Ranks{
       ranks(
